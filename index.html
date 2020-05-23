@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';">
+    <title>Document</title>
+    <link rel="Stylesheet" href="./node_modules/xterm/css/xterm.css">
+    <link type="text/css" rel="stylesheet" href="https://golden-layout.com/assets/css/goldenlayout-base.css"/>
+    <link type="text/css" rel="stylesheet" href="https://golden-layout.com/assets/css/goldenlayout-dark-theme.css"/>
+    <script>
+      if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+    <script src="node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://golden-layout.com/assets/js/goldenlayout.min.js"></script>
+    <script type="text/javascript" src="componenets.js"></script>
+    <style>
+      body {
+        background-color: #242424;
+      }
+
+      .baslik {
+        color: floralwhite;
+        font-size: 20px;
+      }
+
+      .xterm-container {
+
+        display: block;
+        font-family: "Courier New";
+        height: 100%;
+        padding: 0;
+
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+        background-color: #55555522;
+      }
+
+      ::-webkit-scrollbar-thumb:active {
+        background: linear-gradient(left, #22ADD4, #1E98BA);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #fff;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: linear-gradient(left, #fff, #e4e4e4);
+      
+      }
+
+      ::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.1);
+ 
+      }
+
+      #menuContainer { height: 2em;}
+      #menuContainer li {line-height: 2em; vertical-align: middle;display: inline-block; color: #eee; margin: 0 8px; cursor: move}
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="menuContainer"></div>
+
+  </body>
+  <script src="renderer.js"></script>
+
+</html>
