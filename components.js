@@ -1,5 +1,6 @@
 const jnata = require( 'jsonata' );
 const pty = require( 'node-pty' );
+const os = require( 'os' );
 
 const {
   Terminal
@@ -36,11 +37,20 @@ const generateSimpleID = _ => {
 };
 
 const ptySpawn = _ => {
-  const shellArgs = Math.floor( Math.random() * Math.floor( 2 ) ) !== 0 ?
-    [ '/k', 'D:/cygwin64/Cygwin.bat' ] :
-    [ '/k', 'C:/Utils/cmder/vendor/init.bat', '/f' ];
+  // Note: this is POC so shells are hardcoded at this point.
+  const isWin = os.platform() === 'win32' ?
+    true :
+    flase;
+  const shell = isWin ?
+    'cmd.exe' :
+    'bash';
+  const shellArgs = isWin ?
+    Math.floor( Math.random() * Math.floor( 2 ) ) !== 0 ?
+      [ '/k', 'D:/cygwin64/Cygwin.bat' ] :
+      [ '/k', 'C:/Utils/cmder/vendor/init.bat', '/f' ] :
+    [];
 
-  const currentPTY = pty.spawn( 'cmd.exe', shellArgs, {
+  const currentPTY = pty.spawn( shell, shellArgs, {
     name: 'xterm-color',
     fontSize: 14,
     cols: 200,
