@@ -1,9 +1,9 @@
 # manyTerm
-
 ## Tmux for the rest of us
+
 <img src="./assets/terminal.png" width="128" style="width: 128px;" />
 
-## This Working poc showcase
+## This Working POC showcase
 
 ![](./assets/pocdemo.gif)
 
@@ -18,9 +18,22 @@ Terminal is main utility, but additional components are planned for complete wor
 * Monacco based text editor with linter and source code format tools.
   Will be capable of editing files directly from terminal and file manager.
 
+Main goal is to keep things as simple, performant and lightweight as possible by passing on all possible dependencies.
 
+* No webpack
+
+* No React / Vue / Angular 
+
+* Alpinejs for reactive features - https://github.com/alpinejs/alpine
+ 
+
+
+## Libs used in POC
 Tabs and panes with Golden Layout library - http://golden-layout.com/
-Terminal is incredible xterm.js - https://xtermjs.org/
+
+Terminal with outstanding xterm.js project - https://xtermjs.org/
+
+Electron - we all know this one I guess - https://electronjs.org/
 
 ## Other tools
 
