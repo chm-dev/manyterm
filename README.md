@@ -1,7 +1,8 @@
 # manyTerm
+
 ## Tmux for the rest of us
 
-<img src="./assets/terminal.png" width="128" style="width: 128px;" />
+<img src="./assets/terminal.png" style="width: 192px;" />
 
 ## This Working POC showcase
 
@@ -25,7 +26,7 @@ Main goal is to keep things as simple, performant and lightweight as possible by
 * No React / Vue / Angular 
 
 * Alpinejs for reactive features - https://github.com/alpinejs/alpine
- 
+
 
 
 ## Libs used in POC

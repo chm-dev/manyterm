@@ -1,0 +1,166 @@
+{
+  "settings": {
+    "hasHeaders": true,
+    "constrainDragToContainer": false,
+    "reorderEnabled": true,
+    "selectionEnabled": false,
+    "popoutWholeStack": false,
+    "blockedPopoutsThrowError": true,
+    "closePopoutsOnUnload": true,
+    "showPopoutIcon": true,
+    "showMaximiseIcon": true,
+    "showCloseIcon": true,
+    "responsiveMode": "onload",
+    "tabOverlapAllowance": 0,
+    "reorderOnTabMenuClick": true,
+    "tabControlOffset": 10
+  },
+  "dimensions": {
+    "borderWidth": 5,
+    "borderGrabWidth": 15,
+    "minItemHeight": 10,
+    "minItemWidth": 10,
+    "headerHeight": 20,
+    "dragProxyWidth": 300,
+    "dragProxyHeight": 200
+  },
+  "labels": {
+    "close": "close",
+    "maximise": "maximise",
+    "minimise": "minimise",
+    "popout": "open in new window",
+    "popin": "pop in",
+    "tabDropdown": "additional tabs"
+  },
+  "content": [
+    {
+      "type": "row",
+      "isClosable": true,
+      "reorderEnabled": true,
+      "title": "",
+      "content": [
+        {
+          "type": "column",
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "width": 50,
+          "content": [
+            {
+              "type": "stack",
+              "width": 50,
+              "height": 50,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "xterm",
+                  "componentState": {
+                    "name": "cygwin",
+                    "shell": "cmd.exe",
+                    "shellArgs": ["/k", "D:/cygwin64/Cygwin.bat"]
+                  },
+                  "isClosable": true,
+                  "reorderEnabled": true,
+                  "title": "xterm"
+                }
+              ]
+            }, {
+              "type": "row",
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "height": 50,
+              "content": [
+                {
+                  "type": "stack",
+                  "header": {},
+                  "isClosable": true,
+                  "reorderEnabled": true,
+                  "title": "",
+                  "activeItemIndex": 0,
+                  "width": 50,
+                  "content": [
+                    {
+                      "title": "xterm",
+                      "type": "component",
+                      "componentName": "xterm",
+                      "componentState": {
+                        "name": "cygwin",
+                        "shell": "cmd.exe",
+                        "shellArgs": ["/k", "D:/cygwin64/Cygwin.bat"]
+                      },
+                      "isClosable": true,
+                      "reorderEnabled": true
+                    }
+                  ]
+                }, {
+                  "type": "stack",
+                  "header": {},
+                  "isClosable": true,
+                  "reorderEnabled": true,
+                  "title": "",
+                  "activeItemIndex": 0,
+                  "height": 50,
+                  "width": 50,
+                  "content": [
+                    {
+                      "title": "xterm",
+                      "type": "component",
+                      "componentName": "xterm",
+                      "componentState": {
+                        "name": "cmder",
+                        "shell": "cmd.exe",
+                        "shellArgs": ["/k", "C:/Utils/cmder/vendor/init.bat", "/f"]
+                      },
+                      "isClosable": true,
+                      "reorderEnabled": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }, {
+          "type": "column",
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "width": 50,
+          "content": [
+            {
+              "type": "stack",
+              "height": 100,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "xterm",
+                  "componentState": {
+                    "name": "cmder",
+                    "shell": "cmd.exe",
+                    "shellArgs": ["/k", "C:/Utils/cmder/vendor/init.bat", "/f"]
+                  },
+                  "isClosable": true,
+                  "reorderEnabled": true,
+                  "title": "xterm"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "isClosable": true,
+  "reorderEnabled": true,
+  "title": "",
+  "openPopouts": [],
+  "maximisedItemId": null
+}

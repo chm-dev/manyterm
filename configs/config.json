@@ -1,0 +1,22 @@
+{
+  "xterm": {
+    "terminal": {
+      "fontFamily": "Consolas NF",
+      "fontSize": 14,
+      "fontWeight": "normal",
+      "windowsMode": true,
+      "cols": 120
+    },
+    "profiles": [
+      {
+        "name": "cygwin",
+        "shell": "cmd.exe",
+        "shellArgs": ["/k", "D:/cygwin64/Cygwin.bat"]
+      }, {
+        "name": "cmder",
+        "shell": "cmd.exe",
+        "shellArgs": ["/k", "C:/Utils/cmder/vendor/init.bat", "/f"]
+      }
+    ]
+  }
+}
