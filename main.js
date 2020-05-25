@@ -1,3 +1,4 @@
+require( 'v8-compile-cache' );
 require( 'electron-reload' )( __dirname );
 const electron = require( 'electron' );
 // Module to control application life.
@@ -17,8 +18,8 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true
     },
-    width: 800,
-    height: 600
+    width: 1280,
+    height: 720
   } );
 
   // and load the index.html of the app.
