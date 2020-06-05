@@ -1,0 +1,103 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'conkie',
+1 verbose cli   'conkie-theme-default' ]
+2 info using npm@1.3.2
+3 info using node@v0.10.13
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose cache add [ 'conkie', null ]
+6 verbose cache add name=undefined spec="conkie" args=["conkie",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'conkie',
+7 verbose parsed url   path: 'conkie',
+7 verbose parsed url   href: 'conkie' }
+8 verbose cache add [ 'conkie-theme-default', null ]
+9 verbose cache add name=undefined spec="conkie-theme-default" args=["conkie-theme-default",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'conkie-theme-default',
+10 verbose parsed url   path: 'conkie-theme-default',
+10 verbose parsed url   href: 'conkie-theme-default' }
+11 silly lockFile c0e0a2eb-conkie conkie
+12 verbose lock conkie C:\Users\chm\AppData\Roaming\npm-cache\c0e0a2eb-conkie.lock
+13 silly lockFile a0b3cf41-conkie-theme-default conkie-theme-default
+14 verbose lock conkie-theme-default C:\Users\chm\AppData\Roaming\npm-cache\a0b3cf41-conkie-theme-default.lock
+15 silly lockFile c0e0a2eb-conkie conkie
+16 silly lockFile c0e0a2eb-conkie conkie
+17 silly lockFile a0b3cf41-conkie-theme-default conkie-theme-default
+18 silly lockFile a0b3cf41-conkie-theme-default conkie-theme-default
+19 verbose addNamed [ 'conkie', '' ]
+20 verbose addNamed [ null, '*' ]
+21 silly lockFile fc12c43e-conkie conkie@
+22 verbose lock conkie@ C:\Users\chm\AppData\Roaming\npm-cache\fc12c43e-conkie.lock
+23 verbose addNamed [ 'conkie-theme-default', '' ]
+24 verbose addNamed [ null, '*' ]
+25 silly lockFile d52d8ba5-conkie-theme-default conkie-theme-default@
+26 verbose lock conkie-theme-default@ C:\Users\chm\AppData\Roaming\npm-cache\d52d8ba5-conkie-theme-default.lock
+27 silly addNameRange { name: 'conkie', range: '*', hasData: false }
+28 silly addNameRange { name: 'conkie-theme-default', range: '*', hasData: false }
+29 verbose url raw conkie
+30 verbose url resolving [ 'https://registry.npmjs.org/', './conkie' ]
+31 verbose url resolved https://registry.npmjs.org/conkie
+32 info trying registry request attempt 1 at 18:54:49
+33 http GET https://registry.npmjs.org/conkie
+34 verbose url raw conkie-theme-default
+35 verbose url resolving [ 'https://registry.npmjs.org/', './conkie-theme-default' ]
+36 verbose url resolved https://registry.npmjs.org/conkie-theme-default
+37 info trying registry request attempt 1 at 18:54:49
+38 http GET https://registry.npmjs.org/conkie-theme-default
+39 info retry will retry, error on last attempt: Error: CERT_UNTRUSTED
+40 info retry will retry, error on last attempt: Error: CERT_UNTRUSTED
+41 info trying registry request attempt 2 at 18:54:59
+42 http GET https://registry.npmjs.org/conkie
+43 info trying registry request attempt 2 at 18:54:59
+44 http GET https://registry.npmjs.org/conkie-theme-default
+45 info retry will retry, error on last attempt: Error: CERT_UNTRUSTED
+46 info retry will retry, error on last attempt: Error: CERT_UNTRUSTED
+47 info trying registry request attempt 3 at 18:55:59
+48 http GET https://registry.npmjs.org/conkie
+49 info trying registry request attempt 3 at 18:55:59
+50 http GET https://registry.npmjs.org/conkie-theme-default
+51 silly lockFile d52d8ba5-conkie-theme-default conkie-theme-default@
+52 silly lockFile d52d8ba5-conkie-theme-default conkie-theme-default@
+53 error Error: CERT_UNTRUSTED
+53 error     at SecurePair.<anonymous> (tls.js:1349:32)
+53 error     at SecurePair.EventEmitter.emit (events.js:92:17)
+53 error     at SecurePair.maybeInitFinished (tls.js:962:10)
+53 error     at CleartextStream.read [as _read] (tls.js:463:15)
+53 error     at CleartextStream.Readable.read (_stream_readable.js:320:10)
+53 error     at EncryptedStream.write [as _write] (tls.js:366:25)
+53 error     at doWrite (_stream_writable.js:219:10)
+53 error     at writeOrBuffer (_stream_writable.js:209:5)
+53 error     at EncryptedStream.Writable.write (_stream_writable.js:180:11)
+53 error     at write (_stream_readable.js:573:24)
+53 error     at flow (_stream_readable.js:582:7)
+53 error     at Socket.pipeOnReadable (_stream_readable.js:614:5)
+54 error If you need help, you may report this log at:
+54 error     <http://github.com/isaacs/npm/issues>
+54 error or email it to:
+54 error     <npm-@googlegroups.com>
+55 error System Windows_NT 6.2.9200
+56 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "conkie" "conkie-theme-default"
+57 error cwd C:\Dev\PROJECTS\manyterm
+58 error node -v v0.10.13
+59 error npm -v 1.3.2
+60 verbose exit [ 1, true ]

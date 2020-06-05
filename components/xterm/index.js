@@ -13,7 +13,7 @@ const {
 } = require( 'xterm-addon-web-links' );
 
 const termsCount = jnata( '$count(**[componentName="xterm"])' );
-const terminals = {};
+terminals = {};
 
 const generateSimpleID = _ => {
   return Date.now();
@@ -24,6 +24,7 @@ const ptySpawn = ( sh, args ) => {
     name: 'xterm-color',
     cols: 120,
     rows: 40,
+
     cwd: process.cwd(),
     env: process.env
   } );

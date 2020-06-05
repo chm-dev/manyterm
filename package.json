@@ -1,23 +1,11 @@
 {
-  "name": "manyterm_poc",
-  "version": "0.0.1",
-  "description": "",
+  "name": "manyterm",
+  "version": "1.0.0",
+  "description": "<img src=\"./assets/terminal.png\" style=\"width: 192px;\" />",
   "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron .",
-    "rebuild": "electron-rebuild"
-  },
-  "keywords": [],
-  "author": "",
-  "devDependencies": {
-    "electron-packager": "^14.2.0",
-    "electron-rebuild": "^1.8.8",
-    "electron-reload": "^1.5.0",
-    "electron-winstaller": "^4.0.0"
-  },
   "dependencies": {
-    "electron": "^7.1.9",
+    "electron": "8.3.0",
+    "electron-reload": "^1.5.0",
     "golden-layout": "^1.5.9",
     "jquery": "^3.5.1",
     "jsonata": "^1.8.3",
@@ -28,5 +16,24 @@
     "xterm": "^4.3.0",
     "xterm-addon-fit": "^0.4.0",
     "xterm-addon-web-links": "^0.4.0"
-  }
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "rebuild": "electron-rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chm-dev/manyterm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chm-dev/manyterm/issues"
+  },
+  "homepage": "https://github.com/chm-dev/manyterm#readme"
 }
