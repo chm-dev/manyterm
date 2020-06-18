@@ -2,13 +2,24 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      "port": 9992,
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "name": "Debug Main Process",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "windows": {
-        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd",
+        "runtimeArgs": [
+          "--inspect-brk=9992",
+        ],
+        "port": 9992
       },
       "args": [
         "."
