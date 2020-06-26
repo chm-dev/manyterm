@@ -1,5 +1,5 @@
 const pidCwd = require('pid-cwd');
-const {remote} = require('electron');
+const {remote, shell: electronShell} = require('electron');
 const xtermConfig = require('../../../configs/config').xterm;
 const pty = remote.require('node-pty');
 const {Terminal} = require('xterm');
@@ -41,7 +41,10 @@ function create(container, componentState, callback = null) {
     };
 
     thisXterm.loadAddon(fitAddon);
-    thisXterm.loadAddon(new WebLinksAddon());
+    // LINKS ARE ALWAYS OPENED WITH DEFAULT EXTERNAL BROWSER
+    thisXterm.loadAddon(new WebLinksAddon((mev, url) => {
+        electronShell.openExternal(url);
+    }));
 
     thisXterm.onData(data => {
         thisPTY.write(data);
@@ -84,7 +87,6 @@ function create(container, componentState, callback = null) {
 
     container.off('tab');
 }
-
 module.exports = {
     create: create
 };

@@ -2,7 +2,7 @@ const config = require('./configs/config');
 const GoldenLayout = require('golden-layout');
 let mainLayout;
 
-const addMenuItem = (title, componentName, state) => {
+const addMenuItem = (title, componentName, state = '') => {
     const element = $('<li>' + title + '</li>');
     $('#menuContainer').append(element);
     const newItemConfig = {
@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', async ev => {
     mainLayout = new GoldenLayout(require('./configs/mainLayout'), document.querySelector('#mainLayout'));
     require('./components/xterm');
     require('./components/monaco');
+    require('./components/filemanager');
     window.addEventListener('load', e => {
         mainLayout.init();
     });
-    // window.addEventListener('beforeunload' )
 });

@@ -1,0 +1,15 @@
+[
+  {
+    "title": "New project",
+    "category": "Project",
+    "description": "Create a new project from scratch",
+    "shortcut": "CmdOrCtrl+Shift+N",
+    "action": "newproject"
+  }, {
+    "title": "Title",
+    "category": "Optional categoty",
+    "description": "optional description",
+    "shortcut": "Electron accelerator",
+    "action": "Name of the function previously registered"
+  }
+]
