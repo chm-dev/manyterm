@@ -2,7 +2,7 @@ const xtermConfig = require( '../../configs/config' ).xterm;
 const jnata = require( 'jsonata' );
 const terminal = require( './includes' );
 const termsCount = jnata( '$count(**[componentName="xterm"])' );
-terminals = {};
+terminals = {}; // TODO: ADD LET SO IT IS NOT A GLOBAL ON PROD
 
 //  xterm componentState needs to include name, shell and shellArgs
 mainLayout.registerComponent( 'xterm', function( container, componentState ) {

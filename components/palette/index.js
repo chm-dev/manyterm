@@ -1,3 +1,5 @@
+/** @format */
+
 const CmdPalette = require( 'electron-command-palette' );
 const functions = require( './functions' );
 let palette = new CmdPalette();
@@ -8,7 +10,7 @@ palette.add( cmds );
 
 //inline style
 palette.add(
-    { title: 'New project', category: 'Project', description: 'Create a new project from scratch', shortcut: 'CmdOrCtrl+Shift+N', action: 'newproject' }
+  { title: 'New project', category: 'Project', description: 'Create a new project from scratch', shortcut: 'CmdOrCtrl+Shift+N', action: 'newproject' }
 );
 
 //Module style
@@ -16,5 +18,10 @@ palette.register( functions );
 
 //Inline style
 palette.register( 'saveproject', function() {
-    Project.save();
+  Project.save();
 } );
+
+module.exports = {
+  show: _ => palette.show(),
+  hide: _ => palette.hide()
+};

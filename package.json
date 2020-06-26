@@ -7,8 +7,10 @@
     "@opuscapita/filemanager-server": "^1.1.1",
     "@opuscapita/react-filemanager": "^1.1.1",
     "@opuscapita/react-filemanager-connector-node-v1": "^1.1.1",
+    "bindings": "^1.5.0",
     "create-react-class": "^15.6.3",
     "electron": "8.3.0",
+    "electron-command-palette": "^0.1.1",
     "electron-reload": "^1.5.0",
     "golden-layout": "latest",
     "jquery": "^3.5.1",
@@ -22,9 +24,11 @@
     "react": "latest",
     "react-dom": "latest",
     "v8-compile-cache": "^2.1.0",
+    "windows-swca": "^2.0.2",
     "xterm": "^4.3.0",
     "xterm-addon-fit": "^0.4.0",
-    "xterm-addon-web-links": "^0.4.0"
+    "xterm-addon-web-links": "^0.4.0",
+    "xterm-theme": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
