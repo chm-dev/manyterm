@@ -1,6 +1,6 @@
 {
   "name": "manyterm",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "<img src=\"./assets/terminal.png\" style=\"width: 192px;\" />",
   "main": "main.js",
   "dependencies": {
