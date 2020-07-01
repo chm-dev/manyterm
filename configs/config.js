@@ -1,6 +1,6 @@
 /** @format */
 
-const xth = require( 'xterm-theme' ); // TODO: replace it with strings and retrieve afterwards !!!
+const xth = require( "xterm-theme" ); // TODO: replace it with strings and retrieve afterwards !!!
 
 module.exports = {
   xterm: {
@@ -9,41 +9,48 @@ module.exports = {
       theme  : xth.Cobalt2
     },
     terminal: {
-      fontFamily                : 'Consolas NF',
-      fontSize                  : 15,
-      fontWeight                : 'normal',
+      //fontFamily                : 'CaskaydiaCove Nerd Font Mono',  FiraMono NF',
+      fontFamily                : "FiraMono NF",
+      fontSize                  : 14,
+      fontWeight                : "normal",
       windowsMode               : true,
       cols                      : 80,
       drawBoldTextInBrightColors: true,
-      fontWeightBold            : 'normal',
-      allowTransparency         : true
+      fontWeightBold            : "normal",
+      allowTransparency         : true,
+      screenReaderMode          : false
     },
     profiles: [
       {
-        name   : 'nushell',
-        shell  : 'C:/Utils/SHELL/nushell_0_15_0/nu.exe',
-        theme  : xth.Github,
+        name   : "nushell",
+        shell  : "C:/Utils/SHELL/nushell_0_15_0/nu.exe",
+        theme  : xth.Monokai_Vivid,
         opacity: 192 //= 0 - 255
       }, {
-        name : 'elvish',
-        shell: 'C:/Utils/SHELL/elvish.exe'
+        name : "pwsh",
+        shell: "pwsh.exe"
       }, {
-        name     : 'cygwin',
-        shell    : 'D:/cygwin64/bin/zsh.exe',
-        shellArgs: ['-i']
+        name     : "cygwin",
+        shell    : "D:/cygwin64/bin/zsh.exe",
+        shellArgs: ["-i"]
       }, {
-        name     : 'msys2',
-        shell    : 'D:/msys64/usr/bin/zsh.exe',
-        shellArgs: ['-i'],
-        env      : Object.assign( this, process.env, { HOME: '/home/chm' } )
+        name     : "msys2",
+        shell    : "D:/msys64/usr/bin/zsh.exe",
+        shellArgs: ["-i"],
+        env      : Object.assign( this, process.env, { HOME: "/home/chm" } ),
+        theme    : xth.N0tch2k,
+        opacity  : 255
       }, {
-        name     : 'cmder',
-        shell    : 'cmd.exe',
-        shellArgs: ['/k', 'C:/Utils/cmder/vendor/init.bat', '/f']
+        name     : "cmder",
+        shell    : "cmd.exe",
+        shellArgs: ["/k", "C:/Utils/cmder/vendor/init.bat", "/f"]
       }, {
-        name     : 'cmder&buildTools',
-        shell    : 'cmd.exe',
-        shellArgs: ['/k', 'C:/Utils/cmder/vendor/init.bat', '/f', '&&', 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvars64.bat']
+        name     : "cmder&buildTools",
+        shell    : "cmd.exe",
+        shellArgs: [
+          "/k", "C:/Utils/cmder/vendor/init.bat", "/f", "&&", "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Bui" +
+              "ld/vcvars64.bat"
+        ]
       }
     ]
   }

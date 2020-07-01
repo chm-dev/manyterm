@@ -1,6 +1,7 @@
 {
   "settings": {
-    "showPopoutIcon": false
+    "showPopoutIcon": false,
+    "selectionEnabled": true
   },
   "dimensions": {
     "borderWidth": 2

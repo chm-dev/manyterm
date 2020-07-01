@@ -1,14 +1,11 @@
+const { resizeLeft, resizeRight } = require( "../../common/commands/resize" );
+
 module.exports = [
-	{
-		"key"   : "newproject",
-		"action": function () {
-			console.log("Save project");
-		}
-	},
-	{
-		"key"   : "openproject",
-		"action": function () {
-			console.log("Open project");
-		}
-	}
+  {
+    key   : "resizeLeft",
+    action: resizeLeft
+  }, {
+    key   : "resizeRight",
+    action: resizeRight
+  }
 ];

@@ -12,7 +12,7 @@
         href="./node_modules/golden-layout/src/css/goldenlayout-base.css" />
   <link type="text/css" rel="stylesheet"
         href="./node_modules/golden-layout/src/css/goldenlayout-dark-theme.css" />
-
+  <script src="https://darsa.in/fpsmeter/js/fpsmeter.min.js"></script>
   <script>
     if( typeof module==='object' ) {
       window.module=module;
@@ -23,7 +23,9 @@
   <style>
     :root {
       --sidebar-width: 48px;
+      --solid-bg: #000;
     }
+
 
     .glow {
 
@@ -94,30 +96,42 @@
       background: rgba(0, 0, 0, 0.1);
     }
 
+    .lm_header {
+      background: var(--solid-bg);
+    }
+
     #menuContainer {
       height: 100vh;
       width: var(--sidebar-width);
       overflow: hidden;
       float: left;
-      background-color: #00000000;
+      background: var(--solid-bg);
     }
+
     #menuContainer ul {
       list-style: none;
       display: block;
       margin: 0;
       padding: 0;
     }
+
     #menuContainer li {
-      line-height: 4em;
-      height: 4em;
-      background: #000c;
+      margin: 0;
+      padding: 0;
+      line-height: 3em;
+      height: 3em;
+      border-radius: 4px;
+      width: var(--sidebar-width);
+      background: #111c;
       display: block;
       color: #fff;
-      margin: 4px 0;
+
+      margin: 8px 0;
       cursor: move;
       font-size: 13px;
       text-align: center;
     }
+
     #menuContainer li:first-child {
       margin-top: 0;
     }
@@ -126,12 +140,24 @@
       height: 100vh;
       margin-left: var(--sidebar-width);
     }
+
+    body>div[style*="fixed"] {
+      top: unset !important;
+      left: unset !important;
+      bottom: 0 !important;
+      right: 0 !important;
+    }
+
+    .palette {z-index: 99999 !important}
   </style>
 </head>
 
 <body>
-  <div id="menuContainer"><ul></ul></div>
-  <div id="mainLayout" class="glow"></div>
+  <div id="menuContainer">
+    <ul></ul>
+  </div>
+  <div id="mainLayout"></div>
+
   <script src="node_modules/keyboardjs/dist/keyboard.js" type="module">
   </script>
   <script src="node_modules/jquery/dist/jquery.js" type="text/javascript">
@@ -139,6 +165,12 @@
 
 
   <script src="renderer.js"></script>
+
+  <script>
+    //https://github.com/mrdoob/stats.js
+    ( function() { var script=document.createElement( 'script' ); script.onload=function() { var stats=new Stats(); document.body.appendChild( stats.dom ); requestAnimationFrame( function loop() { stats.update(); requestAnimationFrame( loop ) } ); }; script.src='https://mrdoob.github.io/stats.js/build/stats.min.js'; document.head.appendChild( script ); } )()
+
+  </script>
 </body>
 
 </html>

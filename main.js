@@ -72,7 +72,7 @@ function initialize() {
     // is the time when you should delete the corresponding element.
     mainWindow = null;
   } );
-  //mainWindow.openDevTools();
+  mainWindow.openDevTools();
 }
 
 // This method will be called when Electron has finished initialization and is ready to create browser windows. Some

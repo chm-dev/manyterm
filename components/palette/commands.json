@@ -1,15 +1,13 @@
-[
-  {
-    "title": "New project",
-    "category": "Project",
-    "description": "Create a new project from scratch",
-    "shortcut": "CmdOrCtrl+Shift+N",
-    "action": "newproject"
-  }, {
-    "title": "Title",
-    "category": "Optional categoty",
-    "description": "optional description",
-    "shortcut": "Electron accelerator",
-    "action": "Name of the function previously registered"
-  }
-]
+[{
+    "title": "Terminal: Resize Pane Left",
+    "category": "Terminal",
+    "description": "Resize Currently Active Pane Left",
+    "shortcut": "Alt+Left",
+    "action": "resizeLeft"
+}, {
+    "title": "Terminal: Resize Pane Right",
+    "category": "Terminal",
+    "description": "Resize Currently Active Pane Right",
+    "shortcut": "Alt+Right",
+    "action": "resizeRight"
+}]
