@@ -177,7 +177,7 @@ declare module "xterm" {
      * - 7: Minimum for WCAG AAA compliance.
      * - 21: White on black or black on white.
      */
-    minimumContrastRatio?: number;
+    minimumContrastRRatio?: number;
 
     /**
      * The type of renderer to use, this allows using the fallback DOM renderer
@@ -656,7 +656,7 @@ declare module "xterm" {
      */
     onKey: IEvent < {
       key: string;
-      domEvent: KeyboardEvent
+      domEvent: KeyboardEvent;
     } >;
 
     /**
@@ -686,7 +686,7 @@ declare module "xterm" {
      */
     onRender: IEvent < {
       start: number;
-      end: number
+      end: number;
     } >;
 
     /**
@@ -696,7 +696,7 @@ declare module "xterm" {
      */
     onResize: IEvent < {
       cols: number;
-      rows: number
+      rows: number;
     } >;
 
     /**

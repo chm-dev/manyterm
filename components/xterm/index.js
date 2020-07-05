@@ -35,7 +35,6 @@ const resizeAllTerminals = _ =>
     {
       for ( const term in terminals )
       {
-        console.log( term );
         const t = terminals[term];
         t.fitAddon.fit();
         t.pty.resize( t.xterm.cols, t.xterm.rows ); // we have to resize pty after autofit calculates cols and rows

@@ -1,6 +1,7 @@
 /** @format */
 
-const xth = require( "xterm-theme" ); // TODO: replace it with strings and retrieve afterwards !!!
+// TODO: replace it with strings and retrieve afterwards
+const xth = require( "xterm-theme" );
 
 module.exports = {
   xterm: {
@@ -10,35 +11,33 @@ module.exports = {
     },
     terminal: {
       //fontFamily                : 'CaskaydiaCove Nerd Font Mono',  FiraMono NF',
-      fontFamily                : "FiraMono NF",
+      fontFamily                : "Hasklug NF",
       fontSize                  : 14,
-      fontWeight                : "normal",
+      fontWeight                : 100,
       windowsMode               : true,
       cols                      : 80,
       drawBoldTextInBrightColors: true,
       fontWeightBold            : "normal",
       allowTransparency         : true,
-      screenReaderMode          : false
+      screenReaderMode          : false,
+      minimumContrastRRatio     : 7
     },
     profiles: [
       {
         name   : "nushell",
         shell  : "C:/Utils/SHELL/nushell_0_15_0/nu.exe",
-        theme  : xth.Monokai_Vivid,
-        opacity: 192 //= 0 - 255
+        theme  : xth["Argonaut"],
+        opacity: 224 //= 0 - 255
       }, {
         name : "pwsh",
-        shell: "pwsh.exe"
-      }, {
-        name     : "cygwin",
-        shell    : "D:/cygwin64/bin/zsh.exe",
-        shellArgs: ["-i"]
+        shell: "pwsh.exe",
+        theme: xth.ForestBlue
       }, {
         name     : "msys2",
         shell    : "D:/msys64/usr/bin/zsh.exe",
         shellArgs: ["-i"],
         env      : Object.assign( this, process.env, { HOME: "/home/chm" } ),
-        theme    : xth.N0tch2k,
+        theme    : xth.Hardcore,
         opacity  : 255
       }, {
         name     : "cmder",

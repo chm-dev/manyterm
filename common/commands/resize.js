@@ -3,12 +3,12 @@
 const { getFocusedTerminalId } = require( "../../components/xterm/includes" );
 
 /**
- * @param  {bool} resizeLeft - true for left, false for right
+ * @param  {bool} isResizeLeft - true for left, false for right
  */
-function resizeH ( resizeLeft )
+function resizeH ( isResizeLeft )
 {
 //TODO: move this to config
-  let resizeStep = 20;
+  let resizeStep = 5;
   let leftEdge;
 
   var activeEl = document.activeElement;
@@ -17,13 +17,14 @@ function resizeH ( resizeLeft )
 
   // thisId = thisContainer.id;
   const thisId = getFocusedTerminalId();
-  console.log( thisId );
-  const thisContainer = terminals[thisId].container; // activeEl.closest( ".lm_item_container .lm_content" );
+
+  const thisContainer = terminals[thisId].container;
+  const thisContainerEl = thisContainer.getElement().get( 0 );
   // var thisStack = activeEl.closest('.lm_stack');
   /* var thisRow = activeEl.closest( ".lm_row" );
   var components = thisRow.querySelectorAll( ".lm_item_container" );
-  console.log( components );
-  console.log(
+  // console.log( components );
+  // console.log(
   [...components].indexOf( thisContainer )/** [...components] allows to use indexOf on NodeListArray
   );
   */
@@ -34,25 +35,29 @@ function resizeH ( resizeLeft )
     ? false
     : true;
 
-  var thisComponent = terminals[thisId].container;
-  var thisComponentEl = thisComponent.getElement().get( 0 );
   var {
-    offsetWidth : currentWidth,
-    offsetHeight: currentHeight
-  } = thisComponentEl;
-  console.log( currentWidth, currentHeight );
+    width : currentWidth,
+    height: currentHeight
+  } = thisComponent;
+  //console.log( currentWidth, currentHeight );
 
   if ( !leftEdge )
     resizeStep = 0 - resizeStep;
-  thisComponent.setSize(
-    resizeLeft
-      ? currentWidth - resizeStep
-      : currentWidth + resizeStep,
-    currentHeight
-  );
 
-  console.log( thisContainer );
-  console.log( leftEdge );
+  /*
+    thisComponent.setSize(
+      isResizeLeft
+        ? currentWidth - resizeStep
+        : currentWidth + resizeStep,
+      currentHeight
+    );
+   */
+  let stackWidth = thisComponent.parent.parent.parent.config.width;
+  thisComponent.parent.parent.config.width = isResizeLeft
+    ? stackWidth - resizeStep
+    : stackWidth + resizeStep;
+  mainLayout.updateSize();
+// console.log( thisComponent ); console.log( leftEdge );
 }
 
 /**
@@ -64,7 +69,7 @@ function traverse ( next )
 {
   const thisId = getFocusedTerminalId();
   const termKeys = Object.keys( terminals );
-  console.log( termKeys );
+  // console.log( termKeys );
 
   terminals[
     !thisId || termKeys.indexOf( thisId ) >= termKeys.length - 1

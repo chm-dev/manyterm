@@ -26,7 +26,7 @@ const ptySpawn = (sh, args, cwd = process.cwd(), env = process.env) => {
     rows: 40,
     cwd : cwd,
     env : {
-      //     LANG     : (thisLocale || '') + '.UTF-8',
+//     LANG     : (thisLocale || '') + '.UTF-8',
       TERM     : "xterm-256color",
       COLORTERM: "truecolor",
       ...env
@@ -39,28 +39,28 @@ function create(container, componentState, callback = null) {
   if (callback != null && typeof callback != "function") {
     throw new TypeError("callback needs to be a function");
   }
-  /*
+/*
    xtermConfig -> general config taken from main xterm obj (config -> xterm)
    generalTerminalConfig -> general xterm opts,
    generalXtermTheme -> general theme holds two props: opacity and theme
    thisXtermConfig, thisXtermTheme ->  final settings
   */
 
-  // get the config within a function so it remains unmutable split general
-  // settings to xterm general and theme opts
+// get the config within a function so it remains unmutable split general
+// settings to xterm general and theme opts
   const {terminal: generalTerminalConfig, theme: generalXtermTheme} = xtermConfig;
 
-  // same for profile specific settings, retrieved from componentState
+// same for profile specific settings, retrieved from componentState
   const {shell, shellArgs, theme: profileTheme, opacity: profileOpacity} = componentState;
 
-  // get final theme (depending on profile theme)
+// get final theme (depending on profile theme)
   let thisXtermTheme = profileTheme && profileTheme.background
     ? profileTheme
     : generalXtermTheme.theme
       ? generalXtermTheme.theme
       : undefined;
 
-  //add opacity to bg if defined
+//add opacity to bg if defined
 
   const thisOpacity = profileOpacity && profileOpacity > 0 && profileOpacity <= 255
     ? profileOpacity.toString(16)
@@ -100,40 +100,37 @@ function create(container, componentState, callback = null) {
       thisXterm.dispose();
     }
   };
-  //addons
+//addons
   thisXterm.loadAddon(fitAddon);
-  // LINKS ARE ALWAYS OPENED WITH DEFAULT EXTERNAL BROWSER
+// LINKS ARE ALWAYS OPENED WITH DEFAULT EXTERNAL BROWSER
   thisXterm.loadAddon(new WebLinksAddon((ev, url) => {
     electronShell.openExternal(url);
   }));
 
   thisXterm.attachCustomKeyEventHandler(ev => {
     if (ev.key == "Tab" && ev.ctrlKey) {
-      console.log("next term");
       return false;
     } else if ((ev.key === "ArrowLeft" || ev.key === "ArrowRight") && ev.shiftKey && ev.altKey) {
-      console.log("false");
       return false;
     } else {
-      console.log("true");
       return true;
     }
     return false;
   });
 
-  //thisXterm.loadAddon(unicode11Addon); thisXterm.unicode.activeVersion = "11";
+//thisXterm.loadAddon(unicode11Addon); thisXterm.unicode.activeVersion = "11";
 
   thisXterm.onData(data => {
     thisPTY.write(data);
   });
 
   thisPTY.on("data", function (data) {
-    // This bit allows to determine if cwd of a terminal has changed each GL
-    // terminal component has cwd prop with current location
-    // NOTE: cwd = location of main process/shell. ie if you start zsh from bash cwd
-    // will remain at original bash location regardless of zsh navigation actions
+// This bit allows to determine if cwd of a terminal has changed each GL
+// terminal component has cwd prop with current location
+// NOTE: cwd = location of main process/shell. ie if you start zsh from bash cwd
+// will remain at original bash location regardless of zsh navigation actions
 
-    // TODO: emit global event and use it to sync with fm
+// TODO: emit global event and use it to sync with fm
 
     if (typeof cwdTimer != "undefined") 
       clearTimeout(cwdTimer);
@@ -146,7 +143,7 @@ function create(container, componentState, callback = null) {
     }, 400);
 
     thisXterm.write(data);
-    // console.log(data); console.log(tf8Array .from(data));
+// console.log(data); console.log(tf8Array .from(data));
   });
   thisPTY.on("error", data => {
     thisXterm.write(data);
@@ -157,15 +154,15 @@ function create(container, componentState, callback = null) {
   });
 
   container.on("destroy", closeThis);
-  // container.parent.on('stateChanged', (i, j) => console.log(i, j)); FIXME:
-  // PLEASE  add event 'first drop' to layout manager;)
+// container.parent.on('stateChanged', (i, j) => console.log(i, j)); FIXME:
+// PLEASE  add event 'first drop' to layout manager;)
   setTimeout(() => {
     thisXterm.open(thisContainer);
     thisXterm.loadAddon(ligaturesAddon);
     thisXterm.loadAddon(webglAddon);
     container.parent.addId(thisSimpleID);
   }, 100);
-  // Structure of terminals global (will be prop of an object later on)::
+// Structure of terminals global (will be prop of an object later on)::
   terminals[thisSimpleID] = {
     container : container,
     fitAddon  : fitAddon,
