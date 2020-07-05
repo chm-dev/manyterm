@@ -25,13 +25,22 @@ keyboardJS.bind(
 
 keyboardJS.bind( "alt + left", e =>
 {
+  console.log( "alt-l" );
+
   if ( e.shiftKey == true )
+  {
     resizeLeft();
-  console.log( "resize left" );
+    console.log( "resize left" );
+  }
 } );
+
 keyboardJS.bind( "alt + right", e =>
 {
+  console.log( "alt-r" );
+
   if ( e.shiftKey == true )
+  {
     resizeRight();
-  console.log( "resize right" );
+    console.log( "resize right" );
+  }
 } );

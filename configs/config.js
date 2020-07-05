@@ -1,7 +1,7 @@
 /** @format */
 
 // TODO: replace it with strings and retrieve afterwards
-const xth = require( "xterm-theme" );
+const xth = require("xterm-theme");
 
 module.exports = {
   xterm: {
@@ -10,7 +10,7 @@ module.exports = {
       theme  : xth.Cobalt2
     },
     terminal: {
-      //fontFamily                : 'CaskaydiaCove Nerd Font Mono',  FiraMono NF',
+//fontFamily                : 'CaskaydiaCove Nerd Font Mono',  FiraMono NF',
       fontFamily                : "Hasklug NF",
       fontSize                  : 14,
       fontWeight                : 100,
@@ -36,7 +36,7 @@ module.exports = {
         name     : "msys2",
         shell    : "D:/msys64/usr/bin/zsh.exe",
         shellArgs: ["-i"],
-        env      : Object.assign( this, process.env, { HOME: "/home/chm" } ),
+        env      : Object.assign(this, process.env, {HOME: "/home/chm"}),
         theme    : xth.Hardcore,
         opacity  : 255
       }, {

@@ -40,11 +40,11 @@ function create(container, componentState, callback = null) {
     throw new TypeError("callback needs to be a function");
   }
 /*
-   xtermConfig -> general config taken from main xterm obj (config -> xterm)
-   generalTerminalConfig -> general xterm opts,
-   generalXtermTheme -> general theme holds two props: opacity and theme
-   thisXtermConfig, thisXtermTheme ->  final settings
-  */
+xtermConfig -> general config taken from main xterm obj (config -> xterm)
+  generalTerminalConfig -> general xterm opts,
+  generalXtermTheme -> general theme holds two props: opacity and theme
+  thisXtermConfig, thisXtermTheme ->  final settings
+*/
 
 // get the config within a function so it remains unmutable split general
 // settings to xterm general and theme opts
@@ -88,18 +88,30 @@ function create(container, componentState, callback = null) {
   const thisSimpleID = generateSimpleID();
   const thisContainer = container.getElement().get(0); // inject terminal into this element
   thisContainer.id = thisSimpleID;
-  console.log(thisContainer);
+
 
   let cwdTimer;
   let cwd;
+// FIXME: Rebuild! errors flying all over the place right now ;)
+  const endSession = () => {
 
-  const closeThis = _ => {
     if (typeof terminals[thisSimpleID] == "object") {
-      delete terminals[thisSimpleID];
-      thisPTY.destroy();
       thisXterm.dispose();
-    }
-  };
+      if (thisPTY) 
+        thisPTY.destroy();
+      }
+    delete terminals[thisSimpleID];
+    container.off("destroy")
+  }
+
+  const closeContainer = () => {
+
+    container.close();
+    endSession();
+
+
+  }
+
 //addons
   thisXterm.loadAddon(fitAddon);
 // LINKS ARE ALWAYS OPENED WITH DEFAULT EXTERNAL BROWSER
@@ -150,12 +162,14 @@ function create(container, componentState, callback = null) {
   });
 
   thisPTY.on("exit", (code, signal) => {
-    closeThis();
+    console.log("CLOSING Container ");
+    closeContainer();
   });
 
-  container.on("destroy", closeThis);
-// container.parent.on('stateChanged', (i, j) => console.log(i, j)); FIXME:
-// PLEASE  add event 'first drop' to layout manager;)
+  container.on("destroy", endSession);
+
+//FIXME: PLEASE  add event 'first drop' to layout manager;)
+
   setTimeout(() => {
     thisXterm.open(thisContainer);
     thisXterm.loadAddon(ligaturesAddon);
