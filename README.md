@@ -2,7 +2,7 @@
 
 ## Tmux for the rest of us
 
-<img src="./assets/terminal.png" style="width: 192px;" />
+<img src="./assets/out/terminal.png" style="width: 192px;" />
 
 ## This Working POC showcase
 
