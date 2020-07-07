@@ -1,6 +1,5 @@
-/** @format */
-
 const config = require("./configs/config");
+
 const GoldenLayout = require("golden-layout");
 let mainLayout;
 
@@ -24,14 +23,13 @@ document.addEventListener("DOMContentLoaded", async ev => {
   );
   require("./components/xterm");
   require("./components/monaco");
-  require("./components/filemanager");
-  const palette = require("./components/palette");
-  require("./common/keyboard");
+  require("./components/palette");
+  require('./common/keyboard');
   window.addEventListener("load", e => {
     mainLayout.init();
 
-    // mainLayout.on('stateChanged', ev => console.log(ev));
-    // mainLayout.on('selectionChanged', ev => console.log(ev));
+// mainLayout.on('stateChanged', ev => console.log(ev));
+// mainLayout.on('selectionChanged', ev => console.log(ev));
     mainLayout.on("stackCreated", ev => {
       console.log(ev);
 

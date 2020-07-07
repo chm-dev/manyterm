@@ -1,28 +1,101 @@
-/** @format */
+const React = require('react');
+const ReactDOM = require('react-dom');
+const CommandPalette = require('react-command-palette');
+const {resizeLeft, resizeRight, traverseFwd, traverseBck} = require('./commands/terminal');
 
-const CmdPalette = require( "electron-command-palette" );
-const functions = require( "./functions" );
-let palette = new CmdPalette();
-const cmds = require( "./commands.json" );
+let focusedBeforeOpen;
 
-//JSON style
-palette.add( cmds );
+const commands = [
+  {
+    category: 'Resize',
+    command : function noRefCheck() {
+      resizeLeft(focusedBeforeOpen)
+    },
+    id      : 1,
+    name    : 'Resize: Left'
+  }, {
+    category: 'Resize',
+    command : function noRefCheck() {
+      resizeRight(focusedBeforeOpen)
+    },
+    id      : 2,
+    name    : 'Resize: Right'
+  }, {
+    category: 'Command',
+    command : function noRefCheck() {},
+    id      : 3,
+    name    : 'Delete All Tenant'
+  }, {
+    category: 'Network',
+    command : function noRefCheck() {
+      console.log('Go offline triggered');
+    },
+    id      : 4,
+    name    : 'Go offline',
+    shortcut: 'ctrl+m'
+  }, {
+    category: 'Network',
+    command : function noRefCheck() {},
+    id      : 5,
+    name    : 'Go online'
+  }, {
+    category: 'Navigate',
+    command : function noRefCheck() {},
+    id      : 6,
+    name    : 'Jump to Tenant'
+  }, {
+    category: 'Navigate',
+    command : function noRefCheck() {},
+    id      : 7,
+    name    : 'View Logs '
+  }, {
+    category: 'System',
+    command : function noRefCheck() {},
+    id      : 8,
+    name    : 'Show Memory'
+  }, {
+    category: 'System',
+    command : function noRefCheck() {},
+    id      : 9,
+    name    : 'Show CPU'
+  }, {
+    category: 'System',
+    command : function noRefCheck() {},
+    id      : 10,
+    name    : 'Show Disk Usage'
+  }, {
+    category: 'Command',
+    command : function noRefCheck() {},
+    id      : 11,
+    name    : 'Export Tenant'
+  }, {
+    category: 'Drawer',
+    command : function noRefCheck() {},
+    id      : 12,
+    name    : 'Toggle drawer',
+    shortcut: 'Esc'
+  }
+];
 
-//inline style
-/* palette.add(
-  { title: 'New project', category: 'Project', description: 'Create a new project from scratch', shortcut: 'CmdOrCtrl+Shift+N', action: 'newproject' }
-);
- */
-//Module style
-palette.register( functions );
 
-//Inline style
-palette.register( "saveproject", function ()
-{
-  Project.save();
-} );
-palette.toggl;
-module.exports = {
-  show: _ => palette.show(),
-  hide: _ => palette.hide()
-};
+ReactDOM.render(React.createElement(CommandPalette.default, {
+  commands                   : commands,
+  hotKeys                    : 'f1',
+  shouldReturnFocusAfterClose: true,
+  showSpinnerOnSelect        : false,
+  closeOnSelect              : true,
+  trigger                    : 'F1',
+
+  onRequestClose             : _ => focusedBeforeOpen = null
+
+}), document.getElementById('cmdPalette'));
+
+window.addEventListener('keydown', ev => {
+  console.log(ev);
+
+  if (ev.key === "F1") {
+    focusedBeforeOpen = document.activeElement;
+    console.log(focusedBeforeOpen);
+  }
+
+})

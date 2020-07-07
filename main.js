@@ -1,5 +1,7 @@
 /** @format */
 
+const {devTools} = require('./configs/config');
+
 const path = require("path");
 const {spawn} = require("child_process");
 
@@ -75,8 +77,9 @@ function initialize() {
 // corresponding element.
     mainWindow = null;
   });
-  mainWindow.openDevTools();
-}
+  if (devTools) 
+    mainWindow.openDevTools();
+  }
 
 // This method will be called when Electron has finished initialization and is
 // ready to create browser windows. Some APIs can only be used after this event

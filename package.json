@@ -1,58 +1,59 @@
 {
-  "name": "manyterm",
-  "version": "0.0.3",
-  "description": "<img src=\"./assets/terminal.png\" style=\"width: 192px;\" />",
-  "main": "main.js",
-  "dependencies": {
-    "@opuscapita/filemanager-server": "^1.1.1",
-    "@opuscapita/react-filemanager": "^1.1.1",
-    "@opuscapita/react-filemanager-connector-node-v1": "^1.1.1",
-    "bindings": "^1.5.0",
-    "create-react-class": "^15.6.3",
-    "electron": "8.3.0",
-    "electron-command-palette": "^0.1.1",
-    "electron-reload": "^1.5.0",
-    "golden-layout": "latest",
-    "jquery": "^3.5.1",
-    "jsonata": "^1.8.3",
-    "keyboardjs": "^2.6.3",
-    "monaco-editor": "^0.20.0",
-    "monaco-loader": "^1.0.0",
-    "node-pty": "^0.9.0",
-    "pid-cwd": "^1.2.0",
-    "ps-tree": "^1.2.0",
-    "react": "latest",
-    "react-dom": "latest",
-    "v8-compile-cache": "^2.1.0",
-    "windows-swca": "^2.0.2",
-    "xterm": "^4.7.0",
-    "xterm-addon-fit": "^0.4.0",
-    "xterm-addon-ligatures": "^0.3.0",
-    "xterm-addon-unicode11": "^0.2.0",
-    "xterm-addon-web-links": "^0.4.0",
-    "xterm-addon-webgl": "^0.8.0",
-    "xterm-theme": "^1.1.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-transform-react-jsx": "^7.10.1",
-    "electron-rebuild": "^1.11.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron .",
-    "rebuild": "electron-rebuild"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chm-dev/manyterm.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chm-dev/manyterm/issues"
-  },
-  "homepage": "https://github.com/chm-dev/manyterm#readme"
+    "name": "manyterm",
+    "version": "0.0.3",
+    "description": "<img src=\"./assets/terminal.png\" style=\"width: 192px;\" />",
+    "main": "main.js",
+    "dependencies": {
+        "bindings": "^1.5.0",
+        "command-pal": "^0.2.7",
+        "create-react-class": "^15.6.3",
+        "electron": "8.3.0",
+        "electron-reload": "^1.5.0",
+        "golden-layout": "latest",
+        "jquery": "^3.5.1",
+        "jsonata": "^1.8.3",
+        "keyboardjs": "^2.6.3",
+        "monaco-loader": "^1.0.0",
+        "monaco-editor": "^0.20.0",
+        "node-pty": "^0.9.0",
+        "pid-cwd": "^1.2.0",
+        "ps-tree": "^1.2.0",
+        "react": "latest",
+        "react-command-palette": "^0.13.0-0",
+        "react-dom": "latest",
+        "v8-compile-cache": "^2.1.0",
+        "xterm": "^4.7.0",
+        "xterm-addon-fit": "^0.4.0",
+        "xterm-addon-ligatures": "^0.3.0",
+        "xterm-addon-unicode11": "^0.2.0",
+        "xterm-addon-web-links": "^0.4.0",
+        "xterm-addon-webgl": "^0.8.0",
+        "xterm-theme": "^1.1.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.10.1",
+        "@babel/core": "^7.10.2",
+        "@babel/plugin-transform-react-jsx": "^7.10.1",
+        "electron-rebuild": "^1.11.0",
+        "semistandard": "*"
+    },
+    "semistandard": {
+        "global": ["React", "ReactDOM", "CommandPalette"]
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "electron .",
+        "rebuild": "electron-rebuild"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chm-dev/manyterm.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/chm-dev/manyterm/issues"
+    },
+    "homepage": "https://github.com/chm-dev/manyterm#readme"
 }

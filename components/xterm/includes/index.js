@@ -1,21 +1,14 @@
-/** @format */
-
 const pidCwd = require("pid-cwd");
 const {remote, shell: electronShell} = require("electron");
 const pty = remote.require("node-pty"); // FIXME: Change to ipc
-
 const {Terminal} = require("xterm");
 const {FitAddon} = require("xterm-addon-fit");
 const {WebLinksAddon} = require("xterm-addon-web-links");
 const {WebglAddon} = require("xterm-addon-webgl");
 const {LigaturesAddon} = require("xterm-addon-ligatures");
 const {Unicode11Addon} = require("xterm-addon-unicode11");
-const {xtermAddonUnicode11} = require("xterm-addon-unicode11");
-
 const {generateSimpleID} = require("../../../common");
-
 const {requireUncached} = require("../../../common");
-const {event} = require("jquery");
 const xtermConfig = requireUncached("../configs/config").xterm;
 const thisLocale = require("electron").remote.app.getLocale();
 
@@ -46,8 +39,7 @@ xtermConfig -> general config taken from main xterm obj (config -> xterm)
   thisXtermConfig, thisXtermTheme ->  final settings
 */
 
-// get the config within a function so it remains unmutable split general
-// settings to xterm general and theme opts
+// get the config within a function so it remains unmutable split general settings to xterm general and theme opts
   const {terminal: generalTerminalConfig, theme: generalXtermTheme} = xtermConfig;
 
 // same for profile specific settings, retrieved from componentState
@@ -105,11 +97,8 @@ xtermConfig -> general config taken from main xterm obj (config -> xterm)
   }
 
   const closeContainer = () => {
-
     container.close();
     endSession();
-
-
   }
 
 //addons
@@ -121,8 +110,10 @@ xtermConfig -> general config taken from main xterm obj (config -> xterm)
 
   thisXterm.attachCustomKeyEventHandler(ev => {
     if (ev.key == "Tab" && ev.ctrlKey) {
+
       return false;
     } else if ((ev.key === "ArrowLeft" || ev.key === "ArrowRight") && ev.shiftKey && ev.altKey) {
+
       return false;
     } else {
       return true;
@@ -137,10 +128,8 @@ xtermConfig -> general config taken from main xterm obj (config -> xterm)
   });
 
   thisPTY.on("data", function (data) {
-// This bit allows to determine if cwd of a terminal has changed each GL
-// terminal component has cwd prop with current location
-// NOTE: cwd = location of main process/shell. ie if you start zsh from bash cwd
-// will remain at original bash location regardless of zsh navigation actions
+// This bit allows to determine if cwd of a terminal has changed each GL terminal component has cwd prop with current location
+// NOTE: cwd = location of main process/shell. ie if you start zsh from bash cwd will remain at original bash location regardless of zsh navigation actions
 
 // TODO: emit global event and use it to sync with fm
 
@@ -188,8 +177,8 @@ xtermConfig -> general config taken from main xterm obj (config -> xterm)
   container.off("tab");
 }
 
-function getFocusedTerminalId() {
-  const activeEl = document.activeElement;
+function getFocusedTerminalId(activeEl = document.activeElement) {
+
   if (activeEl.tagName.toLowerCase() == "body") 
     return false;
   

@@ -4,13 +4,14 @@
 const xth = require("xterm-theme");
 
 module.exports = {
-  xterm: {
+  devTools: true,
+  xterm   : {
     theme   : {
       opacity: 200,
-      theme  : xth.Cobalt2
+      theme  : xth.Chalk
     },
     terminal: {
-//fontFamily                : 'CaskaydiaCove Nerd Font Mono',  FiraMono NF',
+//fontFamily: 'CaskaydiaCove Nerd Font Mono',  FiraMono NF',
       fontFamily                : "Hasklug NF",
       fontSize                  : 14,
       fontWeight                : 100,
@@ -29,17 +30,9 @@ module.exports = {
         theme  : xth["Argonaut"],
         opacity: 224 //= 0 - 255
       }, {
-        name : "pwsh",
-        shell: "pwsh.exe",
-        theme: xth.ForestBlue
-      }, {
-        name     : "msys2",
-        shell    : "D:/msys64/usr/bin/zsh.exe",
-        shellArgs: ["-i"],
-        env      : Object.assign(this, process.env, {HOME: "/home/chm"}),
-        theme    : xth.Hardcore,
-        opacity  : 255
-      }, {
+        name     : "pwsh",
+        shell    : "pwsh.exe",
+        theme    : xth.ForestBlue,
         name     : "cmder",
         shell    : "cmd.exe",
         shellArgs: ["/k", "C:/Utils/cmder/vendor/init.bat", "/f"]
@@ -50,6 +43,13 @@ module.exports = {
           "/k", "C:/Utils/cmder/vendor/init.bat", "/f", "&&", "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Bui" +
               "ld/vcvars64.bat"
         ]
+      }, {
+        name     : "msys2",
+        shell    : "D:/msys64/usr/bin/zsh.exe",
+        shellArgs: ["-i"],
+        env      : Object.assign(this, process.env, {HOME: "/home/chm"}),
+        theme    : xth.Hardcore,
+        opacity  : 255
       }
     ]
   }
