@@ -17,7 +17,7 @@
     "electron-winstaller": "^4.0.0"
   },
   "dependencies": {
-    "electron": "^7.1.9",
+    "electron": "^7.2.4",
     "golden-layout": "^1.5.9",
     "jquery": "^3.5.1",
     "jsonata": "^1.8.3",
