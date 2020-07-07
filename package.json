@@ -4,17 +4,21 @@
     "description": "<img src=\"./assets/terminal.png\" style=\"width: 192px;\" />",
     "main": "main.js",
     "dependencies": {
+        "@opuscapita/filemanager-server": "^1.1.1",
+        "@opuscapita/react-filemanager": "^1.1.1",
+        "@opuscapita/react-filemanager-connector-node-v1": "^1.1.1",
         "bindings": "^1.5.0",
         "command-pal": "^0.2.7",
         "create-react-class": "^15.6.3",
         "electron": "8.3.0",
         "electron-reload": "^1.5.0",
         "golden-layout": "latest",
+        "htm": "^3.0.4",
         "jquery": "^3.5.1",
         "jsonata": "^1.8.3",
         "keyboardjs": "^2.6.3",
-        "monaco-loader": "^1.0.0",
         "monaco-editor": "^0.20.0",
+        "monaco-loader": "^1.0.0",
         "node-pty": "^0.9.0",
         "pid-cwd": "^1.2.0",
         "ps-tree": "^1.2.0",
@@ -38,7 +42,11 @@
         "semistandard": "*"
     },
     "semistandard": {
-        "global": ["React", "ReactDOM", "CommandPalette"]
+        "global": [
+            "React",
+            "ReactDOM",
+            "CommandPalette"
+        ]
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
