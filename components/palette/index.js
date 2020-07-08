@@ -1,8 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const CommandPalette = require('react-command-palette');
-const {resizeLeft, resizeRight, traverseFwd, traverseBck} = require('./commands/terminal');
+const {default: CommandPalette} = require('react-command-palette');
+const htm = require('htm');
 
+const html = htm.bind(React.createElement)
+const {resizeLeft, resizeRight, traverseFwd, traverseBck} = require('./commands/terminal');
 let focusedBeforeOpen;
 
 const commands = [
@@ -77,7 +79,7 @@ const commands = [
   }
 ];
 
-
+/*
 ReactDOM.render(React.createElement(CommandPalette.default, {
   commands                   : commands,
   hotKeys                    : 'f1',
@@ -89,6 +91,10 @@ ReactDOM.render(React.createElement(CommandPalette.default, {
   onRequestClose             : _ => focusedBeforeOpen = null
 
 }), document.getElementById('cmdPalette'));
+ */
+
+ReactDOM.render(html `<${CommandPalette} commands=${commands} hotKeys='f2' />`, document.getElementById('cmdPalette'))
+
 
 window.addEventListener('keydown', ev => {
   console.log(ev);
