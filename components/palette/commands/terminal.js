@@ -1,20 +1,30 @@
-//FIXME: inadequate filename. Move to xterm component.
+// FIXME: WHAT IS GOING ON ??? const getFocusedTerminalId = require('../../xterm/includes');
+//* FIXME: inadequate filename. Move to xterm component.
 
-const {getFocusedTerminalId} = require("../../xterm/includes");
+function getFocusedTerminalId(activeEl = window.focusLaterElements[0] || document.activeElement) {
+  if (activeEl.tagName.toLowerCase() == 'body') 
+    return false;
+  
+  const thisContainer = activeEl.closest('.lm_item_container .lm_content');
+  return thisContainer.id;
+}
 
 /**
  * @param  {bool} isResizeLeft - true for left, false for right
  */
-function resizeH(isResizeLeft, activeEl = document.activeElement) {
+function resizeH(isResizeLeft, activeEl = window.focusLaterElements[0] || document.activeElement) {
 //TODO: move this to config
-  let resizeStep = 5; //percent of width
-  let leftEdge;
 
-  if (activeEl.tagName.toLowerCase() == "body" || !getFocusedTerminalId()) 
-    throw "no component in focus";
+  let resizeStep = 10; //percent of width
+  let leftEdge;
+  const thisId = typeof activeEl === 'string'
+    ? activeEl
+    : getFocusedTerminalId();
+
+  if (typeof activeEl != 'string' && (activeEl.tagName.toLowerCase() == 'body' || !getFocusedTerminalId())) 
+    throw 'no component in focus';
   
 // thisId = thisContainer.id;
-  const thisId = getFocusedTerminalId();
 
   const thisContainer = terminals[thisId].container;
   const thisContainerEl = thisContainer.getElement().get(0);
@@ -61,10 +71,9 @@ function traverse(next, activeEl = document.activeElement) {
         )]
   ].xterm.focus();
 }
-
 module.exports = {
-  resizeLeft : (activeEl) => resizeH(true, activeEl),
-  resizeRight: (activeEl) => resizeH(false, activeEl),
-  traverseFwd: (activeEl) => traverse(true, activeEl),
-  traverseBck: (activeEl) => traverse(false, activeEl)
+  resizeLeft : activeEl => resizeH(true, activeEl),
+  resizeRight: activeEl => resizeH(false, activeEl),
+  traverseFwd: activeEl => traverse(true, activeEl),
+  traverseBck: activeEl => traverse(false, activeEl)
 };

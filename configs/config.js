@@ -1,64 +1,51 @@
 /** @format */
 
 // TODO: replace it with strings and retrieve afterwards
-const xth = require( 'xterm-theme' );
+const xth = require('xterm-theme');
 
 module.exports = {
   devTools: true,
-  xterm: {
-    theme: {
+  xterm   : {
+    theme   : {
       opacity: 200,
-      theme: xth.Chalk
+      theme  : xth.Chalk
     },
     terminal: {
-      //fontFamily: 'CaskaydiaCove Nerd Font Mono',  FiraMono NF',
-      fontFamily: 'Hasklug NF',
-      fontSize: 14,
-      fontWeight: 100,
-      windowsMode: true,
-      cols: 80,
-      drawBoldTextInBrightColors: true,
-      fontWeightBold: 'normal',
-      allowTransparency: true,
-      screenReaderMode: false,
-      minimumContrastRRatio: 7
+      fontFamily                : 'CaskaydiaCove Nerd Font Mono', // FiraMono NF',
+//fontFamily                : 'Hasklug NF',
+      fontSize                  : 14,
+      fontWeight                : 100,
+      windowsMode               : true,
+      cols                      : 80,
+      drawBoldTextInBrightColors: false,
+      fontWeightBold            : 300,
+      allowTransparency         : true,
+      screenReaderMode          : false,
+//minimumContrastRRatio     : 7
     },
     profiles: [
       {
-        name: 'nushell',
-        shell: 'nu.exe',
-        theme: xth['Argonaut'],
+        name   : 'nushell',
+        shell  : 'nu.exe',
+        theme  : xth['Argonaut'],
         opacity: 224 //= 0 - 255
-      },
-      {
-        name: 'pwsh',
-        shell: 'pwsh.exe',
-        theme: xth.ForestBlue,
-        name: 'cmder',
-        shell: 'cmd.exe',
+      }, {
+
+        theme    : xth.PencilDark,
+        name     : 'cmder',
+        shell    : 'cmd.exe',
         shellArgs: ['/k', 'C:/Utils/cmder/vendor/init.bat', '/f']
-      },
-      {
-        name: 'cmder&buildTools',
-        shell: 'cmd.exe',
-        shellArgs: [
-          '/k',
-          'C:/Utils/cmder/vendor/init.bat',
-          '/f',
-          '&&',
-          'C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvars6' +
-            '4.bat'
-        ]
-      },
-      {
-        name: 'msys2',
-        shell: 'D:/msys64/usr/bin/zsh.exe',
+      }, {
+        name     : 'cmder&buildTools',
+        shell    : 'cmd.exe',
+        shellArgs: ['/k', 'C:/Utils/cmder/vendor/init.bat', '/f', '&&', 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvars64.bat']
+      }, {
+        name     : 'msys2',
+        shell    : 'D:/msys64/usr/bin/zsh.exe',
         shellArgs: ['-i'],
-        env: Object.assign( this, process.env, {
-          HOME: '/home/chm'
-        } ),
-        theme: xth.Hardcore,
-        opacity: 255
+        env      : Object.assign(this, process.env, {HOME: '/home/chm'}),
+        theme    : xth.PencilDark,
+        opacity  : 55
       }
     ]
   }

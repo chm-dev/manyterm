@@ -1,28 +1,15 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const {default: CommandPalette} = require('react-command-palette');
+const {create, getFocusedTerminalId} = require('../xterm/includes');
+const {default: CommandPalette} = require('./main');
+
 const htm = require('htm');
 
-const html = htm.bind(React.createElement)
+const html = htm.bind(React.createElement);
 const {resizeLeft, resizeRight, traverseFwd, traverseBck} = require('./commands/terminal');
-let focusedBeforeOpen;
-
-const commands = [
+let commands = [];
+const basicCommands = [
   {
-    category: 'Resize',
-    command : function noRefCheck() {
-      resizeLeft(focusedBeforeOpen)
-    },
-    id      : 1,
-    name    : 'Resize: Left'
-  }, {
-    category: 'Resize',
-    command : function noRefCheck() {
-      resizeRight(focusedBeforeOpen)
-    },
-    id      : 2,
-    name    : 'Resize: Right'
-  }, {
     category: 'Command',
     command : function noRefCheck() {},
     id      : 3,
@@ -79,6 +66,37 @@ const commands = [
   }
 ];
 
+const terminalCommands = [
+  {
+    category: 'Terminal',
+    command : function noRefCheck() {
+      resizeLeft();
+    },
+    id      : 1,
+    name    : 'Resize: Left'
+  }, {
+    category: 'Terminal',
+    command : function noRefCheck() {
+      resizeRight();
+    },
+    id      : 2,
+    name    : 'Resize: Right'
+  }
+];
+
+const updateCommands = () => {
+  console.log('updating commands');
+  const wfLE = window.focusLaterElements;
+  const daE = document.activeElemen;
+  renderedPalette.setState({
+    commands: (wfLE[0] && wfLE[0].tagName.toLowerCase() === 'textarea') || (daE && daE.tagName.toLowerCase() === 'textarea')
+      ? terminalCommands
+      : basicCommands
+  });
+};
+
+console.log(commands);
+
 /*
 ReactDOM.render(React.createElement(CommandPalette.default, {
   commands                   : commands,
@@ -93,15 +111,47 @@ ReactDOM.render(React.createElement(CommandPalette.default, {
 }), document.getElementById('cmdPalette'));
  */
 
-ReactDOM.render(html `<${CommandPalette} commands=${commands} hotKeys='f2' />`, document.getElementById('cmdPalette'))
-
-
 window.addEventListener('keydown', ev => {
-  console.log(ev);
+  if (ev.key === 'F10') {
+    updateCommands();
 
-  if (ev.key === "F1") {
-    focusedBeforeOpen = document.activeElement;
-    console.log(focusedBeforeOpen);
+    console.log(renderedPalette.state);
+// terminals[activeTerminalId].xterm.blur(); document.querySelector('.react-command-palette button').click();
+  }
+});
+
+class mtPalette extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      commands: []
+    };
+    this.cpRef = React.createRef();
   }
 
-})
+  render() {
+    return html `
+      <${CommandPalette}
+        ref=${this.cpRef}
+        commands="${this.state.commands}"
+        closeOnSelect=${true}
+        hotKeys="f1"
+        resetInputOnClose
+        shouldReturnFocusAfterClose
+        onAfterOpen=${updateCommands}
+      />
+    `;
+  }
+}
+
+const renderedPalette = ReactDOM.render(html `
+    <${mtPalette} />
+  `, document.getElementById('cmdPalette'));
+
+// FIXME: remove below (debug only)
+_rndr          = renderedPalette;
+commands       = updateCommands();
+module.exports = {
+  renderedPalette: renderedPalette,
+  updateCommands : updateCommands
+};

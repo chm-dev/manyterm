@@ -1,0 +1,133 @@
+{
+  "sheetModels": [
+    {
+      "title": "Sheet1",
+      "rootTopicKey": "e5c391ef-5dcb-477b-8a6f-f0bcc9b5edc5",
+      "editorRootTopicKey": "e5c391ef-5dcb-477b-8a6f-f0bcc9b5edc5",
+      "focusKey": "8a3e9d37-94f7-4914-8744-cf53ecfec741",
+      "topics": [
+        {
+          "key": "e5c391ef-5dcb-477b-8a6f-f0bcc9b5edc5",
+          "parentKey": null,
+          "subKeys": [
+            "cdbc9e0e-52d3-43b1-a07a-4826812e8d1b"
+          ],
+          "collapse": false,
+          "style": null,
+          "blocks": [
+            {
+              "type": "CONTENT",
+              "data": "component"
+            }
+          ]
+        },
+        {
+          "key": "cdbc9e0e-52d3-43b1-a07a-4826812e8d1b",
+          "parentKey": "e5c391ef-5dcb-477b-8a6f-f0bcc9b5edc5",
+          "subKeys": [
+            "8a3e9d37-94f7-4914-8744-cf53ecfec741",
+            "621261d8-9458-4248-b173-fa2910da851c"
+          ],
+          "collapse": false,
+          "style": null,
+          "blocks": [
+            {
+              "type": "CONTENT",
+              "data": "EXPORTS"
+            }
+          ]
+        },
+        {
+          "key": "8a3e9d37-94f7-4914-8744-cf53ecfec741",
+          "parentKey": "cdbc9e0e-52d3-43b1-a07a-4826812e8d1b",
+          "subKeys": [],
+          "collapse": false,
+          "style": "{\"contentStyle\":{\"borderRadius\":\"5px\"}}",
+          "blocks": [
+            {
+              "type": "CONTENT",
+              "data": "Key bindindable methods"
+            }
+          ]
+        },
+        {
+          "key": "621261d8-9458-4248-b173-fa2910da851c",
+          "parentKey": "cdbc9e0e-52d3-43b1-a07a-4826812e8d1b",
+          "subKeys": [],
+          "collapse": false,
+          "style": null,
+          "blocks": [
+            {
+              "type": "CONTENT",
+              "data": "command palette commands"
+            }
+          ]
+        }
+      ],
+      "config": {
+        "viewMode": "MindMap",
+        "readOnly": false,
+        "allowUndo": true,
+        "layoutDir": 0,
+        "theme": {
+          "name": "dark-theme1",
+          "randomColor": false,
+          "background": "#2f2f2f",
+          "highlightColor": "#C31004",
+          "marginH": 50,
+          "marginV": 5,
+          "contentStyle": {
+            "lineHeight": "1"
+          },
+          "linkStyle": {
+            "lineRadius": 5,
+            "lineWidth": "2px",
+            "lineColor": "#595959",
+            "lineType": "curve"
+          },
+          "rootTopic": {
+            "contentStyle": {
+              "background": "#C31004",
+              "color": "#fff",
+              "fontSize": "34px",
+              "borderRadius": "5px",
+              "padding": "16px 18px 16px 18px"
+            },
+            "subLinkStyle": {
+              "lineType": "curve"
+            }
+          },
+          "primaryTopic": {
+            "contentStyle": {
+              "background": "rgba(100,100,100,1)",
+              "borderRadius": "5px",
+              "color": "#fff",
+              "fontSize": "14px",
+              "padding": "6px 10px 5px 10px"
+            },
+            "subLinkStyle": {
+              "hasUnderline": true,
+              "lineType": "round"
+            }
+          },
+          "normalTopic": {
+            "contentStyle": {
+              "borderRadius": "5px",
+              "background": "#fff0",
+              "color": "#fff",
+              "fontSize": "13px",
+              "padding": "1px"
+            },
+            "subLinkStyle": {
+              "hasUnderline": true,
+              "lineType": "round"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "extData": {},
+  "currentSheetIndex": 0,
+  "formatVersion": "0.1"
+}
