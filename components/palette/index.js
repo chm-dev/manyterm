@@ -21,7 +21,7 @@ const basicCommands = [
     },
     id      : 4,
     name    : 'Go offline',
-    shortcut: 'ctrl+m'
+    shortcut: 'ctrl+a'
   }, {
     category: 'Network',
     command : function noRefCheck() {},

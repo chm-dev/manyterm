@@ -126,7 +126,7 @@ function create(container, componentState, callback = null) {
 // NOTE: cwd = location of main process/shell. ie if you start zsh from bash cwd will remain at original bash location regardless
 // of zsh navigation actions
 
-// TODO: emit global event and use it to sync with fm
+// TODO: [FM postponed] emit global event and use it to sync with fm
 
     if (typeof cwdTimer != 'undefined') 
       clearTimeout(cwdTimer);
@@ -152,7 +152,7 @@ function create(container, componentState, callback = null) {
 
   container.on('destroy', endSession);
 
-//FIXME: PLEASE  add event 'first drop' to layout manager;)
+//FIXME: add event 'first drop' to layout manager instead of below ;)
 
   setTimeout(() => {
     thisXterm.open(thisContainer);

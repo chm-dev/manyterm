@@ -20,7 +20,7 @@ module.exports = {
       drawBoldTextInBrightColors: false,
       fontWeightBold            : 300,
       allowTransparency         : true,
-      screenReaderMode          : false,
+      screenReaderMode          : false
 //minimumContrastRRatio     : 7
     },
     profiles: [
@@ -30,7 +30,6 @@ module.exports = {
         theme  : xth['Argonaut'],
         opacity: 224 //= 0 - 255
       }, {
-
         theme    : xth.PencilDark,
         name     : 'cmder',
         shell    : 'cmd.exe',
@@ -45,7 +44,7 @@ module.exports = {
         shellArgs: ['-i'],
         env      : Object.assign(this, process.env, {HOME: '/home/chm'}),
         theme    : xth.PencilDark,
-        opacity  : 55
+        opacity  : 200
       }
     ]
   }
