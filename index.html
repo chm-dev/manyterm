@@ -20,30 +20,40 @@
   </script>
 
   <style>
+    body.inactive {
+      filter: brightness(0.8) saturate(0.5);
+      opacity: 0.9
+    }
+
+
     :root {
       --sidebar-width: 48px;
-      --solid-bg: #000;
+      --solid-bg: #121212cc;
     }
 
     .glow {
 
       box-shadow:
-        inset 0 0 50px #111,
+        inset 0 0 20px #111,
         /* inner white */
-        inset 20px 0 80px #909,
+        inset 10px 0 30px #909,
         /* inner left magenta short */
-        inset -20px 0 80px #044,
+        inset -10px 0 30px #044,
         /* inner right cyan short */
-        inset 20px 0 300px #404,
+        inset 10px 0 100px #404,
         /* inner left magenta broad */
-        inset -20px 0 300px #066,
+        inset -10px 0 100px #066,
         /* inner right cyan broad */
-        0 0 50px #633,
+        0 0 15px #633,
         /* outer white */
-        -10px 0 80px #a0a,
+        -5px 0 20px #a0a,
         /* outer left magenta */
-        10px 0 80px #066 !important
+        5px 0 20px #066 !important
         /* outer right cyan */
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body,
@@ -57,7 +67,11 @@
 
     .lm_goldenlayout,
     .lm_content {
-      background-color: #00000000 !important;
+      background-color: transparent;
+    }
+
+    .lm_splitter {
+      opacity: 0.8;
     }
 
     .baslik {
@@ -81,12 +95,12 @@
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: #fff;
+      background: #fff6;
     }
 
     ::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      background: linear-gradient(left, #fff, #e4e4e4);
+      background: #fff3
     }
 
     ::-webkit-scrollbar-track {
@@ -98,45 +112,69 @@
       background: var(--solid-bg);
     }
 
-    #menuContainer {
-      height: 100vh;
+    #newItemMenu {
+      /*height: 100vh;
       width: var(--sidebar-width);
-      overflow: hidden;
+    
       float: left;
+      */
+      display: none;
+      overflow: hidden;
       background: var(--solid-bg);
+      box-sizing: content-box;
+
+      position: absolute;
+      height: 64px;
+      top: 10vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 6px;
+
+      z-index: 10;
+      box-shadow: 2px 4px 8px #0005
     }
 
-    #menuContainer ul {
+    #newItemMenu ul {
       list-style: none;
       display: block;
       margin: 0;
       padding: 0;
+      backdrop-filter: blur(4px);
     }
 
-    #menuContainer li {
+    #newItemMenu li {
       margin: 0;
-      padding: 0;
-      line-height: 3em;
-      height: 3em;
+      padding: 0 30px;
+      line-height: 64px;
+      height: 64px;
       border-radius: 4px;
-      width: var(--sidebar-width);
-      background: #111c;
-      display: block;
+
+
+      display: inline-block;
       color: #fff;
 
-      margin: 8px 0;
+      margin: 0 8px;
       cursor: move;
-      font-size: 13px;
+      font-size: 14px;
       text-align: center;
     }
 
-    #menuContainer li:first-child {
-      margin-top: 0;
+    #newItemMenu li:first-child {
+      margin-left: 0;
+    }
+
+    #newItemMenu li:last-child {
+      margin-right: 0;
+    }
+
+    #newItemMenu li:hover {
+      background-color: #fff1
     }
 
     #mainLayout {
       height: 100vh;
-      margin-left: var(--sidebar-width);
+      padding-bottom: 24px;
+      /* margin-left: var(--sidebar-width); */
     }
 
     body>div[style*="fixed"] {
@@ -146,26 +184,86 @@
       right: 0 !important;
     }
 
-    .ReactModal__Overlay  {
+    .ReactModal__Overlay {
       z-index: 99999 !important
     }
+
+    #statusBar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 24px;
+      font-size: 14px;
+      line-height: 24px;
+      color: #999;
+      background: #001;
+
+      font-family: Consolas;
+      padding: 0 6px;
+    }
   </style>
+  <!-- command pallete styles -->
+  <style>
+    .atom-category {
+      color: #fff;
+      margin-right: 6px;
+      border-radius: 2px;
+      padding: 1.2px 3px;
+    }
+
+    .atom-shortcut {
+      float: right;
+      margin-right: 2px;
+      display: inline-block;
+      margin-left: 0.45454545em;
+      padding: 0 0.375em;
+      line-height: 2;
+      margin-top: -0.375em;
+      font-family: inherit;
+      font-size: 1em;
+      letter-spacing: 0.1em;
+      border-radius: 3px;
+      color: #fff;
+      background-color: #4d78cc;
+    }
+
+    .atom-category.Command {
+      background: rgb(67, 130, 207);
+    }
+
+    .atom-category.Navigate {
+      background: rgb(165, 22, 134);
+    }
+
+    .atom-category.Network {
+      background: rgb(46, 41, 194);
+    }
+
+    .atom-category.System {
+      background: rgb(49, 177, 79);
+    }
+
+    .atom-category.Drawer {
+      background: rgb(206, 64, 206);
+    }
+  </style>
+
 </head>
 
 <body>
 
-  <div id="menuContainer">
+  <div id="newItemMenu">
     <ul></ul>
   </div>
   <div id="mainLayout"></div>
   <!-- TODO: create a proper css -->
   <div id="cmdPalette" style="display: none"></div>
+  <div id="statusBar"><span style="color: #fff">(☞ﾟヮﾟ)☞</span> Ten statusbar to
+    obecnie jest ściernisko, ale będzie sanfransisko!!! <span
+          style="color: #fff">☜(ﾟヮﾟ☜)</span></div>
   <script src="node_modules/jquery/dist/jquery.js"
           type="text/javascript"></script>
-
-  <script src="node_modules/keyboardjs/dist/keyboard.js" type="module"></script>
   <script src="renderer.js"></script>
-
 
   <script src="https://darsa.in/fpsmeter/js/fpsmeter.min.js"></script>
   <script>

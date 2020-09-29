@@ -1,4 +1,5 @@
-// FIXME: WHAT IS GOING ON ??? const getFocusedTerminalId = require('../../xterm/includes');
+// FIXME: WHAT IS GOING ON ??? 
+// const getFocusedTerminalId = require('../../xterm/includes');
 //* FIXME: inadequate filename. Move to xterm component.
 
 function getFocusedTerminalId(activeEl = window.focusLaterElements[0] || document.activeElement) {
