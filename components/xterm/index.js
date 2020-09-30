@@ -1,6 +1,8 @@
 const xtermConfig = require( '../../configs/config' ).xterm;
 const terminal = require( './includes' );
-const { resizeAllTerminals } = terminal;
+const {
+  resizeAllTerminals
+} = terminal;
 
 //  xterm componentState needs to include name, shell and shellArgs
 mainLayout.registerComponent( 'xterm', function ( container, componentState ) {
@@ -17,8 +19,7 @@ mainLayout.registerComponent( 'xterm', function ( container, componentState ) {
   container.on( 'resize', ev => {
     if ( mainLayout.toConfig().content.length > 0 )
       resizeAllTerminals();
-  }
-  );
+  } );
 } );
 
 // JUST FOR TESTS
