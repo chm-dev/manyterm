@@ -27,14 +27,14 @@ module.exports = {
       {
         name: 'nushell',
         shell: 'nu.exe',
-        theme: xth['Argonaut'],
-        opacity: 225 //= 0 - 255
+        theme: xth[ 'Duotone_Dark' ],
+        opacity: 245 //= 0 - 255
       },
       {
         theme: xth.PencilDark,
         name: 'cmder',
         shell: 'cmd.exe',
-        shellArgs: ['/k', 'C:/Utils/cmder/vendor/init.bat', '/f']
+        shellArgs: [ '/k', 'C:/Utils/cmder/vendor/init.bat', '/f' ]
       },
       {
         name: 'cmder&buildTools',
@@ -50,8 +50,10 @@ module.exports = {
       {
         name: 'msys2',
         shell: 'D:/msys64/usr/bin/zsh.exe',
-        shellArgs: ['-i'],
-        env: Object.assign( this, process.env, { HOME: '/home/chm' } ),
+        shellArgs: [ '-i' ],
+        env: Object.assign( this, process.env, {
+          HOME: '/home/chm'
+        } ),
         theme: xth.PencilDark,
         opacity: 200
       }

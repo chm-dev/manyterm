@@ -33,15 +33,28 @@ document.addEventListener( 'DOMContentLoaded', async ev => {
   require( './components/palette' );
   require( './components/filemanager' );
   require( './common/keyboard' );
-  window.addEventListener( 'load', e => {
-    mainLayout.init();
 
-    // mainLayout.on('stateChanged', ev => console.log(ev)); mainLayout.on('selectionChanged', ev => console.log(ev));
-    mainLayout.on( 'stackCreated', ev => {
-      if ( ev.parent.isStack === true )
-        ev.parent.on( 'activeContentItemChanged', e => {
-          console.log( 'active changed', e );
-        } );
-    } );
+  // Make New item menu appear whenever there are no components. Make it disappear whenever there is at least one.
+
+  mainLayout.on( 'initialised', ev => {
+    //TODO: New Item Menu toggling should be exported in dedicated module.
+    console.log( 'initialised' );
+    if ( mainLayout.root.getItemsByType( 'component' ).length === 0 )
+      document.querySelector( '#newItemMenu' ).style.display = "block";
+  } )
+  mainLayout.on( 'stateChanged', ev => {
+    console.log( 'state changed', ev );
+    if ( mainLayout.root.getItemsByType( 'component' ).length === 0 )
+      document.querySelector( '#newItemMenu' ).style.display = "block"
+    else
+      document.querySelector( '#newItemMenu' ).style.display = "none"
+  } )
+
+  mainLayout.on( 'stackCreated', ev => {
+    if ( ev.parent.isStack === true )
+      ev.parent.on( 'activeContentItemChanged', e => {
+        console.log( 'active changed', e );
+      } );
   } );
+  mainLayout.init();
 } );
