@@ -14,9 +14,9 @@ const {requireUncached} = require('../../../common');
 const xtermConfig = requireUncached('../configs/config').xterm;
 
 // TODO: consider dropping jnata dependency and use Golden Layout filter + vanilla js
-const jnata = require('jsonata');
-const termCount = jnata('$count(**[componentName="xterm"])');
-const thisLocale = require('electron').remote.app.getLocale();
+const jnata  = require('jsonata'),
+  termCount  = jnata('$count(**[componentName="xterm"])'),
+  thisLocale = require('electron').remote.app.getLocale();
 
 const ptySpawn = (sh, args, cwd = process.cwd(), env = process.env) => {
   return pty.spawn(sh, args, {
@@ -70,16 +70,17 @@ function create(container, componentState, callback = null) {
     thisXtermBackground += thisOpacity.toString(16); //=
   }
   const thisXtermConfig = JSON.parse(JSON.stringify(generalTerminalConfig));
-
   thisXtermConfig.theme = JSON.parse(JSON.stringify(thisXtermTheme));
-  const thisPTY = ptySpawn(shell, shellArgs);
-  const thisXterm = new Terminal(thisXtermConfig);
-  const fitAddon = new FitAddon();
-  const webglAddon = new WebglAddon();
-  const ligaturesAddon = new LigaturesAddon();
-  const unicode11Addon = new Unicode11Addon();
-  const thisSimpleID = generateSimpleID();
-  const thisContainer = container.getElement().get(0); // inject terminal into this element
+
+  const thisPTY    = ptySpawn(shell, shellArgs),
+    thisXterm      = new Terminal(thisXtermConfig),
+    fitAddon       = new FitAddon(),
+    webglAddon     = new WebglAddon(),
+    ligaturesAddon = new LigaturesAddon(),
+    unicode11Addon = new Unicode11Addon(),
+    thisSimpleID   = generateSimpleID(),
+    thisContainer  = container.getElement().get(0); //  xterm will inject into this el
+
   thisContainer.id                    = thisSimpleID;
   thisContainer.style.backgroundColor = thisXtermBackground;
 
@@ -94,12 +95,16 @@ function create(container, componentState, callback = null) {
       }
     }
     delete terminals[thisSimpleID];
-    container.off('destroy');
-  };
+    console.log(container);
+    if (container._mSubscriptions.destroy.length > 0) 
+      container.off('destroy');
+    };
   const closeContainer = () => {
-    container.close();
+    if (terminals[container._config.id]) 
+      container.close();
     endSession();
-  };
+  }
+
 
   // addons
   thisXterm.loadAddon(fitAddon);
@@ -176,21 +181,18 @@ function create(container, componentState, callback = null) {
   });
 
   thisPTY.on('exit', (code, signal) => {
-    console.log('CLOSING Container ');
+    console.log('CLOSING Container after pty exit if any left');
     closeContainer();
   });
-
   container.on('destroy', endSession);
-
-  // TODO: add event 'first drop' to layout manager instead of below
-
+  // This is "first drop"
   setTimeout(() => {
     thisXterm.open(thisContainer);
     thisXterm.loadAddon(ligaturesAddon);
     thisXterm.loadAddon(webglAddon);
     container.parent.addId(thisSimpleID);
     resizeAllTerminals();
-  }, 500);
+  }, 100);
   // Structure of terminals global (will be prop of an object later on)::
   terminals[thisSimpleID] = {
     container : container,
