@@ -1,33 +1,47 @@
 {
     "settings": {
         "showPopoutIcon": false,
-        "selectionEnabled": true
+        "selectionEnabled": false
     },
     "dimensions": {
         "borderWidth": 2
     },
-    "content": [{
-        "type": "row",
-        "content": [{
-            "type": "component",
-            "componentName": "xterm",
-            "componentState": {
-                "name": "cygwin",
-                "shell": "cmd.exe",
-                "shellArgs": ["/k", "D:/cygwin64/Cygwin.bat"]
-            }
-        }, {
-            "type": "column",
-            "content": [{
-                "type": "component",
-                "componentName": "xterm",
-                "componentState": {
-                    "name": "cmder",
-                    "shell": "cmd.exe",
-                    "shellArgs": ["/k", "C:/Utils/cmder/vendor/init.bat", "/f"]
+    "content": [
+        {
+            "type": "row",
+            "content": [
+                {
+                    "type": "component",
+                    "componentName": "xterm",
+                    "componentState": {
+                        "name": "cygwin",
+                        "shell": "cmd.exe",
+                        "shellArgs": [
+                            "/k",
+                            "D:/cygwin64/Cygwin.bat"
+                        ]
+                    }
+                },
+                {
+                    "type": "column",
+                    "content": [
+                        {
+                            "type": "component",
+                            "componentName": "xterm",
+                            "componentState": {
+                                "name": "cmder",
+                                "shell": "cmd.exe",
+                                "shellArgs": [
+                                    "/k",
+                                    "C:/Utils/cmder/vendor/init.bat",
+                                    "/f"
+                                ]
+                            }
+                        }
+                    ]
                 }
-            }]
-        }]
-    }],
+            ]
+        }
+    ],
     "content": []
 }

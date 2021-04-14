@@ -38,7 +38,6 @@ const terminalCommands = [
 ];
 
 const updateCommands = () => {
-  console.log( 'updating commands' );
   const wfLE = window.focusLaterElements;
   const daE = document.activeElement;
   renderedPalette.setState( {
@@ -47,8 +46,6 @@ const updateCommands = () => {
       : basicCommands
   } );
 };
-
-console.log( commands );
 
 /*
 ReactDOM.render(React.createElement(CommandPalette.default, {
@@ -67,8 +64,6 @@ ReactDOM.render(React.createElement(CommandPalette.default, {
 window.addEventListener( 'keydown', ev => {
   if ( ev.key === 'F10' ) {
     updateCommands();
-
-    console.log( renderedPalette.state );
     // terminals[activeTerminalId].xterm.blur(); document.querySelector('.react-command-palette button').click();
   }
 } );
@@ -111,7 +106,6 @@ class mtPalette extends React.Component {
         ref=${this.cpRef}
         commands="${this.state.commands}"
         closeOnSelect=${true}
-        hotKeys="f1"
         resetInputOnClose
         renderCommand=${this.thisCommand}
         shouldReturnFocusAfterClose

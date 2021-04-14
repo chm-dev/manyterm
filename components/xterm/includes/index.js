@@ -65,6 +65,9 @@ function create(container, componentState, callback = null) {
   // put background color to separate const and make theme bg transparent this is to apply actual terminal background color to the
   // whole component container rether then xterm theme. looks and behaves much better
   let thisXtermBackground = thisXtermTheme.background.slice(0, 7);
+  /*  FIXME: Statement below updates generalTheme background to 'tranparent' value for shells without theme declared
+  if terminal  has no custom theme in config and uses general one (from xterm object)
+ */
   thisXtermTheme.background = 'transparent';
   if (thisOpacity) {
     thisXtermBackground += thisOpacity.toString(16); //=
@@ -83,7 +86,7 @@ function create(container, componentState, callback = null) {
 
   thisContainer.id                    = thisSimpleID;
   thisContainer.style.backgroundColor = thisXtermBackground;
-
+  debugger;
   let cwdTimer;
   let cwd;
   // FIXME: Investigate errors on terminal close  ;)
@@ -103,8 +106,7 @@ function create(container, componentState, callback = null) {
     if (terminals[container._config.id]) 
       container.close();
     endSession();
-  }
-
+  };
 
   // addons
   thisXterm.loadAddon(fitAddon);
@@ -174,7 +176,7 @@ function create(container, componentState, callback = null) {
     }, 400);
 
     thisXterm.write(data);
-    // console.log(data); console.log(tf8Array .from(data));
+    //console.log(data); console.log(tf8Array .from(data));
   });
   thisPTY.on('error', data => {
     thisXterm.write(data);
@@ -205,14 +207,14 @@ function create(container, componentState, callback = null) {
   container.off('tab');
 }
 
-function getFocusedTerminalId(activeEl = window.focusLaterElements[0] || document.activeElement) {
+const getFocusedTerminalId = (activeEl = window.focusLaterElements[0] || document.activeElement) => {
   if (activeEl.tagName.toLowerCase() == 'body') {
     return false;
   }
 
   const thisContainer = activeEl.closest('.lm_item_container .lm_content');
   return thisContainer.id;
-}
+};
 
 const resizeAllTerminals = _ => {
   if (mainLayout.toConfig().content[0].content && mainLayout.toConfig().content[0].content.length > 0 && termCount.evaluate(mainLayout.toConfig()) == Object.keys(terminals).length) {
