@@ -6,7 +6,7 @@
 
 ## This Working POC showcase
 
-![](./assets/pocdemo.gif)
+https://user-images.githubusercontent.com/11930016/154855947-cb96e9dc-7d7d-4d64-9be4-0f9321367ca7.mov
 
 ## Idea
 
